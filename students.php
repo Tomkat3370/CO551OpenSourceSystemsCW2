@@ -20,21 +20,21 @@
 
       // prepare page content
       $data['content'] .= "<table border='1'>";
-      $data['content'] .= "<tr><th colspan='5' align='center'>Modules</th></tr>";
-      $data['content'] .= "<tr><th>Code</th><th>Type</th><th>Level</th></tr>";
+      $data['content'] .= "<tr><th colspan='5' align='center'>Students</th></tr>";
+      $data['content'] .= "<tr><th>ID</th><th>Password</th><th>DoB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th></tr>";
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) 
       {
-         $data['content'] = "<tr><td> $row[txtstudentid] </td>
-                                 <td> $row[txtpassword] </td>
-                                 <td> $row[txtdob] </td>
-                                 <td> $row[txtfirstname] </td>
-                                 <td> $row[txtlastname] </td>
-                                 <td> $row[txthouse] </td>
-                                 <td> $row[txttown] </td>
-                                 <td> $row[txtcounty] </td>
-                                 <td> $row[txtcountry] </td>
-                                 <td> $row[txtpostcode] </td></tr>";
+         $data['content'] = "<tr><td> {$row["txtstudentid"]} </td>
+                                 <td> {$row["txtpassword"]} </td>
+                                 <td> {$row["txtdob"]} </td>
+                                 <td> {$row["txtfirstname"]} </td>
+                                 <td> {$row["txtlastname"]} </td>
+                                 <td> {$row["txthouse"]} </td>
+                                 <td> {$row["txttown"]} </td>
+                                 <td> {$row["txtcounty"]} </td>
+                                 <td> {$row["txtcountry"]} </td>
+                                 <td> {$row["txtpostcode"]} </td></tr>";
       }
 
       // render the template
