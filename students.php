@@ -4,7 +4,7 @@
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
 
-   require_once 'vendor/autoload.php';
+  // require_once 'vendor/autoload.php';
 
    // check logged in
    if (isset($_SESSION['id'])) 
@@ -21,11 +21,12 @@
       // prepare page content
       $data['content'] .= "<table border='1'>";
       $data['content'] .= "<tr><th colspan='5' align='center'>Students</th></tr>";
-      $data['content'] .= "<tr><th>ID</th><th>Password</th><th>DoB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th></tr>";
+      $data['content'] .= "<tr><th>Select</th><th>ID</th><th>Password</th><th>DoB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th></tr>";
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) 
       {
-         $data['content'] = "<tr><td> {$row["txtstudentid"]} </td>
+         $data['content'] = "<tr>
+                                 <td> {$row["txtstudentid"]} </td>
                                  <td> {$row["txtpassword"]} </td>
                                  <td> {$row["txtdob"]} </td>
                                  <td> {$row["txtfirstname"]} </td>

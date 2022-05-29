@@ -4,7 +4,7 @@ library like Faker. ##
 
 2. Create a new script called students.php that will display all the student records within the student
 table. The data within each field should be displayed inside the cells of an HTML table and the
-HTML must be well formed. 
+HTML must be well formed. ##
 
 3. Add a new column to the student table (from task 2) which should contain checkboxes that allow
 selecting each of the table rows for performing certain operations. Add a Delete Button in the
