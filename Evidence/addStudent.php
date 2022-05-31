@@ -3,10 +3,11 @@
 include("_includes/config.inc");
 include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
-
+include("password_hash.php");
 
 // check logged in
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) 
+{
 
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
@@ -50,7 +51,7 @@ if (isset($_SESSION['id'])) {
       $data['content'] = <<<EOD
 
    <h2>Add Student Record</h2>
-   <form name="frmdetails" action="" method="post">
+   <form name="frmdetails" action="students.php" method="post">
    First Name :
    <input name="txtfirstname" type="text" value="" /><br/>
    Surname :

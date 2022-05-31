@@ -10,27 +10,22 @@
 
     
     //Loop over ($_POST) for each
-    foreach($_POST['students'] as $studentid) 
-    {
-        var_dump($_POST['sttudents']);
+    
+        var_dump($_POST['students']);
 
-        if(var_dump($_POST['students']) == $studentid)
-        {
-        
+              
             $sql = "DELETE FROM 'student' WHERE 'students' = 'studentid';";
 
-            
-
             $result = mysqli_query($conn,$sql);
+
+            
 
             //redirect
              header("Location: students.php");
     
             echo "Delete Successful!";
-        }  
-
-        die();
-    }
+        
+    
     
     
 
