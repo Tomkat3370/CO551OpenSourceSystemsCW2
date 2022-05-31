@@ -28,9 +28,7 @@
        // Display the student details within the html table
        while($row = mysqli_fetch_array($result)) 
        {
-         //<td><input type="checkbox" name="select[]" value="student"></td>
-
-          $data['content'] .= "<tr><td> {$row["studentid"]} </td>
+         $data['content'] .= "<tr><td> {$row["studentid"]} </td>
                                  <td> {$row["password"]} </td>
                                  <td> {$row["dob"]} </td>
                                  <td> {$row["firstname"]} </td>
@@ -39,7 +37,8 @@
                                  <td> {$row["town"]} </td>
                                  <td> {$row["county"]} </td>
                                  <td> {$row["country"]} </td>
-                                 <td> {$row["postcode"]} </td></tr>";
+                                 <td> {$row["postcode"]} </td>
+                                 <td> <input type='checkbox' name='select' value=''/></td></tr>";
        }
        $data['content'] .= "</table>";
  

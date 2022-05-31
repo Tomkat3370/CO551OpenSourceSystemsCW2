@@ -56,5 +56,3 @@ function template( $file, $args=array() ){
    include $file;
    return ob_get_clean();
 }
-
-?>
