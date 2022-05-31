@@ -10,7 +10,7 @@ HTML must be well formed. ##
 selecting each of the table rows for performing certain operations. Add a Delete Button in the
 bottom of the list that allows deleting the selected student records from the database. Higher marks
 will be awarded for more robust implementations that may include validation or confirmation from
-the user that they are sure about proceeding with the deletion. 
+the user that they are sure about proceeding with the deletion. ##
 
 4. As the application stands there is no facility to add new students to the student table. Create a
 new script called addstudent.php that contains a form for entering student details. The details

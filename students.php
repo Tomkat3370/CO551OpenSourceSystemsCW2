@@ -9,9 +9,6 @@
    // check logged in
    if (isset($_SESSION['id'])) 
    {
-
-  
-
       echo template("templates/partials/header.php");
       echo template("templates/partials/nav.php");
 
@@ -20,10 +17,12 @@
 
       $result = mysqli_query($conn,$sql);
 
+      $data['content'] .= "<form action='deleteStudents.php' method='POST'>";
+
       // prepare page content
       $data['content'] .= "<table border='1'>";
-      $data['content'] .= "<tr><th colspan='10' align='center'>Students</th></tr>";
-      $data['content'] .= "<th>ID</th><th>Password</th><th>DoB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th></tr>";
+      $data['content'] .= "<tr><th colspan='20' align='center'>Students</th></tr>";
+      $data['content'] .= "<th>ID</th><th>Password</th><th>DoB</th><th>First Name</th><th>Last Name</th><th>House</th><th>Town</th><th>County</th><th>Country</th><th>Postcode</th><th>Select</th></tr>";
 
        // Display the student details within the html table
        while($row = mysqli_fetch_array($result)) 
@@ -38,9 +37,13 @@
                                  <td> {$row["county"]} </td>
                                  <td> {$row["country"]} </td>
                                  <td> {$row["postcode"]} </td>
-                                 <td> <input type='checkbox' name='select' value=''/></td></tr>";
+                                 <td> <input type='checkbox' name='students[{$row["studentid"]}]' value=''/></td></tr>";
        }
        $data['content'] .= "</table>";
+
+       $data['content'] .= "<input type='submit' name='deletebutton' value='Delete'>";
+
+       $data['content'] .= "</form>";
  
        // render the template
        echo template("templates/default.php", $data);
