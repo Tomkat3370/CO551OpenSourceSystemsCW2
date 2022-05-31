@@ -21,7 +21,5 @@
 			echo "New students successfully added!";	
 
 	}
-			
-	
 
 ?>
