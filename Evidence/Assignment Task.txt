@@ -27,7 +27,7 @@ awarded for robust implementations will some level of file type validation.
 
 6. Use emerging HTML and CSS standards and/or framework wrappers (e.g. Bootstrap or
 Tailwind) to improve the UI/UX. Ensure that any presentation elements are consistently applied
-across all pages. 
+across all pages. ##
 
 
 7. Protect all your SQL queries against SQL injection either by using mysqli_real_escape_string()

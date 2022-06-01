@@ -37,11 +37,11 @@
                                  <td> {$row["county"]} </td>
                                  <td> {$row["country"]} </td>
                                  <td> {$row["postcode"]} </td>
-                                 <td> <input type='checkbox' name='students[{$row["studentid"]}]' value=''/></td></tr>";
+                                 <td> <input type='checkbox' name='students[]' value='$row[studentid]'/></td></tr>";
        }
        $data['content'] .= "</table>";
 
-       $data['content'] .= "<input type='submit' name='deletebutton' value='Delete'>";
+       $data['content'] .= "<input type='submit' name='deletebtn' value='delete'>";
 
        $data['content'] .= "</form>";
  

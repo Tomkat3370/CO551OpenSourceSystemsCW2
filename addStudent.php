@@ -3,7 +3,6 @@
 include("_includes/config.inc");
 include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
-include("password_hash.php");
 
 // check logged in
 if (isset($_SESSION['id'])) 
@@ -13,11 +12,12 @@ if (isset($_SESSION['id']))
    echo template("templates/partials/nav.php");
 
    // if the form has been submitted
-   if (isset($_POST['submit'])) {
-
+   if (isset($_POST['submit'])) 
+   {
+      
       // build an sql statment to update the student details
       $sql .= "INSERT INTO student SET studentid ='" . $_POST['txtstudentid']  . "',";
-      $sql .= "password ='" . $_POST['txtpassword']  . "',";
+      $sql .= "password ='" . $_POST[$secure_pass]  . "',";
       $sql = "firstname ='" . $_POST['txtfirstname'] . "',";
       $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
       $sql .= "dob ='" . $_POST['txtdob']  . "',";
@@ -31,16 +31,6 @@ if (isset($_SESSION['id']))
       $result = mysqli_query($conn,$sql);
 
       $data['content'] = "<p>Students details have been added</p>";
-
-      // Normal Password
-    $pass = $_POST['password'];
- 
-    // Securing password using password_hash
-    $secure_pass = password_hash($pass, PASSWORD_BCRYPT);
- 
-    $sql = "INSERT INTO login_tb (u_username, u_password)
-    VALUES('$username', '$secure_pass')";
-    $result = mysqli_query($conn, $sql);
 
    }
    else {
