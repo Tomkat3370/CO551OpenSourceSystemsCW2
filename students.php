@@ -40,10 +40,12 @@
                                  <td> <input type='checkbox' name='students[]' value='$row[studentid]'/></td></tr>";
        }
        $data['content'] .= "</table>";
-
-       $data['content'] .= "<input type='submit' name='deletebtn' value='delete'>";
+      
+       //delete student record
+       $data['content'] .= "<input type='submit' name='deletebtn' id='delete' value='delete'>";
 
        $data['content'] .= "</form>";
+   
  
        // render the template
        echo template("templates/default.php", $data);

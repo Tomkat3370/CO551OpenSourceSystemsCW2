@@ -11,37 +11,32 @@ if (isset($_SESSION['id']))
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
 
+
    // if the form has been submitted
    if (isset($_POST['submit'])) 
    {
       
       // build an sql statment to update the student details
-      $sql .= "INSERT INTO student SET studentid ='" . $_POST['txtstudentid']  . "',";
-      $sql .= "password ='" . $_POST[$secure_pass]  . "',";
-      $sql = "firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "dob ='" . $_POST['txtdob']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
-      $sql .= "where studentid = '" . $_SESSION['id'] . "';";
+      $sql = "INSERT INTO student ('studentid', 'password', 'dob', 'firstname', 'lastname', 'house', 'town', 'county', 'country', 'postcode') VALUES ('$_POST[txtstudentid]', '$_POST[txtpassword]', '$_POST[txtdob]', '$_POST[txtfirstname]', '$_POST[txtlastname]', '$_POST[txthouse]', '$_POST[txttown]', '$_POST[txtcounty]', '$_POST[txtcountry]', '$_POST[txtpostcode]');";
 
       $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Students details have been added</p>";
+      $sql();
 
+      $data['content'] .= "<p>Record added successfully</p>";
    }
-   else {
-      
+   else 
+   {
+?>      
       // using <<<EOD notation to allow building of a multi-line string
       // see http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php for info
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
    <h2>Add Student Record</h2>
-   <form name="frmdetails" action="students.php" method="post">
+   <form enctype="multipart/form-data" name="frmdetails" action="addStudent.php" method="post">
+   Student ID :
+   <input name="txtstudentid" type="text" value="" /><br/>
    First Name :
    <input name="txtfirstname" type="text" value="" /><br/>
    Surname :
@@ -60,20 +55,29 @@ if (isset($_SESSION['id']))
    <input name="txtcountry" type="text"  value="" /><br/>
    Postcode :
    <input name="txtpostcode" type="text"  value="" /><br/>
+  
    <input type="submit" value="Save" name="submit"/>
    </form>
 
-EOD;
 
+EOD;
+<?php
    }
+
+
+   $data['content'] .= "<form action='students.php' method='post'>";
+      $data['content'] .= "<input type='submit' name='backbtn' value='Back'/>";
+      $data['content'] .= "</form>";
 
    // render the template
    echo template("templates/default.php", $data);
 
-} else {
-   header("Location: index.php");
+
 }
 
-echo template("templates/partials/footer.php");
+
+   header("Location: index.php");
+
+   echo template("templates/partials/footer.php");
 
 ?>
